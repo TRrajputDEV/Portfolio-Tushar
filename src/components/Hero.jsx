@@ -14,7 +14,7 @@ export default function Hero() {
       >
         <GripHorizontal className="w-8 h-8 text-black mb-2 opacity-50 mx-auto" />
         <p className="font-black uppercase text-center text-sm leading-tight">
-          Draggable Element <br/> Open To Work
+          Drag Me <br/> Open To Work
         </p>
       </motion.div>
 
@@ -31,7 +31,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2 border-4 border-black px-4 py-1 bg-[#4ade80] font-mono font-black uppercase text-sm mb-6 brutal-shadow"
           >
             <span className="w-2 h-2 bg-black rounded-full animate-ping"></span>
-            System.Active // India
+            Software Engineer // India
           </motion.div>
           <motion.h1 
             initial={{ opacity: 0, x: -50 }}

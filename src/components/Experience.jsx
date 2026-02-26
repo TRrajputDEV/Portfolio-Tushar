@@ -1,4 +1,4 @@
-import { ServerCrash, CheckCircle2 } from "lucide-react";
+import { Briefcase, CheckCircle2 } from "lucide-react";
 
 const ReceiptBlock = ({ title, subtitle, date, details }) => (
   <div className="relative bg-white border-x-4 border-black p-8 md:p-12 mb-0 border-b-4 border-dashed">
@@ -27,13 +27,12 @@ export default function Experience() {
   return (
     <section className="py-24 px-6 max-w-4xl mx-auto">
       <div className="flex items-center justify-center gap-4 mb-12">
-        <ServerCrash className="w-12 h-12 text-black" />
-        <h2 className="text-5xl font-black uppercase tracking-tighter text-black text-center">System_Logs</h2>
+        <Briefcase className="w-12 h-12 text-black" />
+        <h2 className="text-5xl font-black uppercase tracking-tighter text-black text-center">Timeline</h2>
       </div>
       
-      {/* The Receipt Container */}
+      {/* The Container */}
       <div className="brutal-shadow relative">
-        {/* Top edge of receipt */}
         <div className="h-4 w-full bg-white border-x-4 border-t-4 border-black"></div>
 
         <ReceiptBlock 
@@ -41,8 +40,8 @@ export default function Experience() {
           subtitle="Advanced Data Structures"
           date="Jun 2025 - Jul 2025"
           details={[
-            "Earned an 'O' grade during summer training by demonstrating mastery in Advanced Data Structures.",
-            "Engineered a Credit Card Validator utilizing Luhn's Algorithm for precise checksum operations."
+            "Achieved top honors during summer training by mastering complex data structures and algorithms.",
+            "Built a functioning Credit Card Validator using Luhn's Algorithm to execute precise checksum operations."
           ]}
         />
 
@@ -51,8 +50,8 @@ export default function Experience() {
           subtitle="B.Tech in CSE (CGPA: 7.9)"
           date="Aug 2023 - Present"
           details={[
-            "Maintaining a strong 7.9 CGPA across core engineering disciplines.",
-            "Finished in the top 10 of the university-wide Cybersecurity Hackathon."
+            "Currently maintaining a high academic standing across all core computer science disciplines.",
+            "Secured a top 10 finish in the university-wide Cybersecurity Hackathon competition."
           ]}
         />
 
@@ -61,12 +60,11 @@ export default function Experience() {
           subtitle="Intermediate & Matriculation"
           date="Apr 2019 - Mar 2022"
           details={[
-            "Achieved 87% in Class 12 (Intermediate) focusing on analytical problem solving.",
-            "Secured 92% in Class 10 (Matriculation) in Bhiwani, Haryana."
+            "Completed Class 12 with an 87% final score, focusing heavily on analytical problem solving.",
+            "Graduated Class 10 with a 92% final score in Bhiwani, Haryana."
           ]}
         />
 
-        {/* Bottom edge of receipt */}
         <div className="h-8 w-full border-x-4 border-b-4 border-black bg-white receipt-edge rotate-180"></div>
       </div>
     </section>

@@ -6,12 +6,33 @@
   :root {
     --background: 0 0% 100%; /* Pure White */
     --foreground: 0 0% 0%;   /* Pure Black */
+    --radius: 0rem;          /* Brutalism doesn't do soft corners */
   }
   
+  /* 1. THE GLOBAL CROSSHAIR 
+     A thick, perfect 24x24 black plus-sign.
+  */
   body {
     @apply bg-background text-foreground antialiased selection:bg-black selection:text-[#ff90e8];
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 0h4v10h10v4H14v10h-4V14H0v-4h10V0z" fill="black"/></svg>') 12 12, crosshair;
   }
 
+  /* 2. THE BRUTALIST POINTER 
+     A sharp, jagged geometric arrow for links, buttons, and drag elements.
+  */
+  a, button, [role="button"], .cursor-pointer, .cursor-grab, .active\:cursor-grabbing:active {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"><path d="M0 0l24 10-10 2-2 10L0 0z" fill="black"/></svg>') 0 0, pointer !important;
+  }
+}
+
+@layer base {
+  /* Force all borders to be pure black for that heavy architectural feel */
+  * {
+    @apply border-black;
+  }
+}
+
+@layer utilities {
   /* Neo-Brutalist Hard Shadows */
   .brutal-shadow {
     box-shadow: 8px 8px 0px 0px rgba(0,0,0,1);
@@ -31,10 +52,11 @@
       linear-gradient(180deg, rgba(0,0,0,0.05) 2px, transparent 2px);
     background-size: 64px 64px;
   }
-}
 
-@layer base {
-  * {
-    @apply border-black;
+  /* The Receipt Edge for the Experience Section */
+  .receipt-edge {
+    background-image: radial-gradient(circle at 10px 0, transparent 10px, white 11px);
+    background-size: 20px 20px;
+    background-repeat: repeat-x;
   }
 }

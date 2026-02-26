@@ -1,70 +1,62 @@
-import { GraduationCap, Briefcase } from "lucide-react";
+import { ServerCrash, CheckCircle2 } from "lucide-react";
 
-const TimelineBlock = ({ type, title, subtitle, date, details, alignRight }) => (
-  <div className={`relative flex flex-col md:flex-row gap-8 items-center md:items-start ${alignRight ? 'md:flex-row-reverse' : ''} mb-12`}>
-    
-    {/* Center Spine Marker */}
-    <div className="hidden md:flex flex-col items-center justify-center absolute left-1/2 -ml-[28px] top-0 z-10">
-      <div className="w-14 h-14 bg-white border-4 border-black brutal-shadow flex items-center justify-center rounded-full">
-        {type === 'edu' ? <GraduationCap className="w-6 h-6 text-black" /> : <Briefcase className="w-6 h-6 text-black" />}
+const ReceiptBlock = ({ title, subtitle, date, details }) => (
+  <div className="relative bg-white border-x-4 border-black p-8 md:p-12 mb-0 border-b-4 border-dashed">
+    <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-6">
+      <div>
+        <h3 className="text-3xl font-black text-black uppercase leading-none mb-2">{title}</h3>
+        <h4 className="text-black font-bold text-lg bg-[#fffb00] inline-block px-2">{subtitle}</h4>
+      </div>
+      <div className="border-4 border-black px-4 py-2 bg-black text-white font-mono font-bold uppercase text-sm whitespace-nowrap brutal-shadow">
+        {date}
       </div>
     </div>
-
-    {/* Content Card */}
-    <div className="w-full md:w-5/12">
-      <div className={`p-6 border-4 border-black bg-white brutal-shadow ${alignRight ? 'bg-[#fffb00]' : ''}`}>
-        <div className="inline-block px-3 py-1 bg-black text-white font-mono text-xs font-bold uppercase mb-4">
-          {date}
+    
+    <div className="space-y-4 font-mono text-sm font-bold text-black/80">
+      {details.map((detail, idx) => (
+        <div key={idx} className="flex items-start gap-3">
+          <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5 text-[#3b82f6]" strokeWidth={3} />
+          <p>{detail}</p>
         </div>
-        <h3 className="text-2xl font-black text-black uppercase leading-tight mb-2">{title}</h3>
-        <h4 className="text-black font-bold text-sm mb-4">{subtitle}</h4>
-        <ul className="space-y-3">
-          {details.map((detail, idx) => (
-            <li key={idx} className="text-sm font-medium text-black flex items-start gap-2">
-              <span className="text-[#3b82f6] font-black mt-0.5">»</span> {detail}
-            </li>
-          ))}
-        </ul>
-      </div>
+      ))}
     </div>
   </div>
 );
 
 export default function Experience() {
   return (
-    <section className="py-20 px-6 max-w-6xl mx-auto relative">
-      <h2 className="text-5xl font-black uppercase tracking-tighter text-black text-center mb-20">System_Logs</h2>
+    <section className="py-24 px-6 max-w-4xl mx-auto">
+      <div className="flex items-center justify-center gap-4 mb-12">
+        <ServerCrash className="w-12 h-12 text-black" />
+        <h2 className="text-5xl font-black uppercase tracking-tighter text-black text-center">System_Logs</h2>
+      </div>
       
-      {/* The Thick Spine */}
-      <div className="hidden md:block absolute left-1/2 top-[150px] bottom-0 w-2 bg-black -ml-1"></div>
+      {/* The Receipt Container */}
+      <div className="brutal-shadow relative">
+        {/* Top edge of receipt */}
+        <div className="h-4 w-full bg-white border-x-4 border-t-4 border-black"></div>
 
-      <div className="relative z-10">
-        <TimelineBlock 
-          type="work"
+        <ReceiptBlock 
           title="Lovely Professional University"
-          subtitle="Advanced Data Structures and Algorithms"
-          date="June 2025 - July 2025"
+          subtitle="Advanced Data Structures"
+          date="Jun 2025 - Jul 2025"
           details={[
             "Earned an 'O' grade during summer training by demonstrating mastery in Advanced Data Structures.",
             "Engineered a Credit Card Validator utilizing Luhn's Algorithm for precise checksum operations."
           ]}
-          alignRight={false}
         />
 
-        <TimelineBlock 
-          type="edu"
+        <ReceiptBlock 
           title="Lovely Professional University"
-          subtitle="B.Tech in Computer Science and Engineering"
+          subtitle="B.Tech in CSE (CGPA: 7.9)"
           date="Aug 2023 - Present"
           details={[
             "Maintaining a strong 7.9 CGPA across core engineering disciplines.",
             "Finished in the top 10 of the university-wide Cybersecurity Hackathon."
           ]}
-          alignRight={true}
         />
 
-        <TimelineBlock 
-          type="edu"
+        <ReceiptBlock 
           title="S.V.V.S SR. SEC. SCHOOL"
           subtitle="Intermediate & Matriculation"
           date="Apr 2019 - Mar 2022"
@@ -72,8 +64,10 @@ export default function Experience() {
             "Achieved 87% in Class 12 (Intermediate) focusing on analytical problem solving.",
             "Secured 92% in Class 10 (Matriculation) in Bhiwani, Haryana."
           ]}
-          alignRight={false}
         />
+
+        {/* Bottom edge of receipt */}
+        <div className="h-8 w-full border-x-4 border-b-4 border-black bg-white receipt-edge rotate-180"></div>
       </div>
     </section>
   );

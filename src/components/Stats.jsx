@@ -18,22 +18,7 @@ const stats = [
     color: "bg-clay-green",
     iconBg: "#A8F0C6",
   },
-  {
-    icon: Trophy,
-    value: "Top 10",
-    label: "LPU Hackathon",
-    sub: "University-wide",
-    color: "bg-clay-pink",
-    iconBg: "#FFB3E6",
-  },
-  {
-    icon: Zap,
-    value: "<200ms",
-    label: "WebSocket Latency",
-    sub: "Real-time sync",
-    color: "bg-clay-blue",
-    iconBg: "#A8D8FF",
-  },
+
   {
     icon: Code2,
     value: "3+",

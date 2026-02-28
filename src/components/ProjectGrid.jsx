@@ -56,23 +56,7 @@ const archiveProjects = [
     link: "#",
     github: "https://github.com/TRrajputDEV/ShopCRM.git",
     color: "#FFD0A8",
-  },
-  {
-    title: "Portfolio V1",
-    desc: "The previous iteration of my personal developer portfolio — brutalist edition.",
-    tech: "React · Tailwind",
-    link: "#",
-    github: "#",
-    color: "#A8D8FF",
-  },
-  {
-    title: "CC Validator",
-    desc: "Algorithmic credit card checksum validation utility using Luhn's Algorithm.",
-    tech: "C++",
-    link: "#",
-    github: "#",
-    color: "#FFB3B3",
-  },
+  }
 ];
 
 function FeaturedCard({ project, index }) {
@@ -221,10 +205,7 @@ export default function ProjectGrid() {
         viewport={{ once: true }}
         className="flex flex-col items-start gap-4 mb-8"
       >
-        <div className="clay-section-label bg-clay-orange text-gray-800">
-          <Box className="w-3.5 h-3.5" />
-          Other Builds
-        </div>
+
         <h3 className="text-3xl font-black text-gray-900 tracking-tight">
           Archive
         </h3>

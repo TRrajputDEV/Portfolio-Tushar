@@ -205,7 +205,6 @@ export default function Hero() {
             >
               <div className="relative z-10">
                 <div className="flex items-center gap-2 mb-3">
-                  <Sparkles className="w-4 h-4 text-gray-700" />
                   <span className="font-mono-clay text-xs font-bold text-gray-600 uppercase tracking-wider">Currently exploring</span>
                 </div>
                 <div className="flex flex-wrap gap-2">

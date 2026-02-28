@@ -1,51 +1,92 @@
-import { Target, GitCommit, Trophy, Zap } from "lucide-react";
+import { motion } from "framer-motion";
+import { Target, GitCommit, Trophy, Zap, Code2, Star } from "lucide-react";
 
-const StatBlock = ({ icon: Icon, value, label, color, sourceStr }) => (
-  <div className={`group flex flex-col justify-between p-6 border-4 border-black ${color} brutal-shadow transition-all duration-150 hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none cursor-default`}>
-    <div className="flex justify-between items-start mb-8">
-      <div className="p-3 bg-white border-4 border-black brutal-shadow">
-        <Icon className="w-8 h-8 text-black" strokeWidth={2.5} />
-      </div>
-    </div>
-    <div>
-      <h3 className="text-5xl font-black text-black tracking-tighter mb-2">{value}</h3>
-      <p className="text-black font-bold uppercase text-sm">{label} {sourceStr}</p>
-    </div>
-  </div>
-);
+const stats = [
+  {
+    icon: Target,
+    value: "400+",
+    label: "LeetCode Problems",
+    sub: "Solved",
+    color: "bg-clay-yellow",
+    iconBg: "#FFE566",
+  },
+  {
+    icon: GitCommit,
+    value: "500+",
+    label: "GitHub Commits",
+    sub: "& counting",
+    color: "bg-clay-green",
+    iconBg: "#A8F0C6",
+  },
+  {
+    icon: Trophy,
+    value: "Top 10",
+    label: "LPU Hackathon",
+    sub: "University-wide",
+    color: "bg-clay-pink",
+    iconBg: "#FFB3E6",
+  },
+  {
+    icon: Zap,
+    value: "<200ms",
+    label: "WebSocket Latency",
+    sub: "Real-time sync",
+    color: "bg-clay-blue",
+    iconBg: "#A8D8FF",
+  },
+  {
+    icon: Code2,
+    value: "3+",
+    label: "Full-Stack Projects",
+    sub: "Live in production",
+    color: "bg-clay-purple",
+    iconBg: "#D4BAFF",
+  },
+  {
+    icon: Star,
+    value: "7.9",
+    label: "University CGPA",
+    sub: "B.Tech CSE",
+    color: "bg-clay-orange",
+    iconBg: "#FFD0A8",
+  },
+];
 
 export default function Stats() {
   return (
-    <section className="py-12 px-6 max-w-7xl mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <StatBlock 
-          icon={Target} 
-          value="400+" 
-          label="LeetCode Solved" 
-          color="bg-[#fffb00]"
-          sourceStr=""
-        />
-        <StatBlock 
-          icon={GitCommit} 
-          value="500+" 
-          label="GitHub Commits" 
-          color="bg-[#4ade80]"
-          sourceStr=""
-        />
-        <StatBlock 
-          icon={Trophy} 
-          value="Top 10" 
-          label="LPU Hackathon" 
-          color="bg-[#ff90e8]"
-          sourceStr=""
-        />
-        <StatBlock 
-          icon={Zap} 
-          value="<200ms" 
-          label="Sync Latency" 
-          color="bg-[#3b82f6]"
-          sourceStr=""
-        />
+    <section className="py-16 px-6 max-w-6xl mx-auto">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        {stats.map((stat, i) => {
+          const Icon = stat.icon;
+          return (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.07, type: "spring", stiffness: 200, damping: 20 }}
+              className={`clay-card ${stat.color} p-5 flex flex-col gap-3 cursor-default`}
+            >
+              <div className="relative z-10">
+                <div
+                  className="w-9 h-9 rounded-clay-sm flex items-center justify-center mb-3"
+                  style={{ backgroundColor: "rgba(255,255,255,0.55)", boxShadow: "0 2px 0 rgba(0,0,0,0.07), 0 4px 10px rgba(0,0,0,0.07)" }}
+                >
+                  <Icon className="w-4 h-4 text-gray-800" strokeWidth={2.5} />
+                </div>
+                <div className="text-2xl font-black text-gray-900 leading-none tracking-tight mb-1">
+                  {stat.value}
+                </div>
+                <div className="font-mono-clay text-[10px] font-bold text-gray-700 uppercase tracking-wide leading-tight">
+                  {stat.label}
+                </div>
+                <div className="text-[10px] text-gray-500 font-medium mt-0.5">
+                  {stat.sub}
+                </div>
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );

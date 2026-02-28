@@ -1,62 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%; /* Pure White */
-    --foreground: 0 0% 0%;   /* Pure Black */
-    --radius: 0rem;          /* Brutalism doesn't do soft corners */
-  }
-  
-  /* 1. THE GLOBAL CROSSHAIR 
-     A thick, perfect 24x24 black plus-sign.
-  */
-  body {
-    @apply bg-background text-foreground antialiased selection:bg-black selection:text-[#ff90e8];
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 0h4v10h10v4H14v10h-4V14H0v-4h10V0z" fill="black"/></svg>') 12 12, crosshair;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --radius: 1.5rem;
+
+    /* Clay Palette */
+    --clay-yellow: #FFE566;
+    --clay-pink: #FFB3E6;
+    --clay-green: #A8F0C6;
+    --clay-blue: #A8D8FF;
+    --clay-purple: #D4BAFF;
+    --clay-orange: #FFD0A8;
+    --clay-red: #FFB3B3;
+    --clay-bg: #F0EEF8;
+
+    /* Clay Shadow System */
+    --shadow-clay-sm: 0 2px 0 rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.8);
+    --shadow-clay-md: 0 4px 0 rgba(0,0,0,0.1), 0 8px 24px rgba(0,0,0,0.1), inset 0 2px 0 rgba(255,255,255,0.7);
+    --shadow-clay-lg: 0 6px 0 rgba(0,0,0,0.12), 0 16px 40px rgba(0,0,0,0.12), inset 0 2px 0 rgba(255,255,255,0.8);
+    --shadow-clay-xl: 0 8px 0 rgba(0,0,0,0.14), 0 24px 60px rgba(0,0,0,0.14), inset 0 3px 0 rgba(255,255,255,0.9);
   }
 
-  /* 2. THE BRUTALIST POINTER 
-     A sharp, jagged geometric arrow for links, buttons, and drag elements.
-  */
-  a, button, [role="button"], .cursor-pointer, .cursor-grab, .active\:cursor-grabbing:active {
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"><path d="M0 0l24 10-10 2-2 10L0 0z" fill="black"/></svg>') 0 0, pointer !important;
-  }
-}
-
-@layer base {
-  /* Force all borders to be pure black for that heavy architectural feel */
   * {
-    @apply border-black;
+    @apply border-border;
+  }
+
+  body {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    background-color: var(--clay-bg);
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(255, 229, 102, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(212, 186, 255, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(168, 216, 255, 0.1) 0%, transparent 70%);
+    @apply text-foreground antialiased;
+    background-attachment: fixed;
+    cursor: default;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-weight: 900;
   }
 }
 
 @layer utilities {
-  /* Neo-Brutalist Hard Shadows */
-  .brutal-shadow {
-    box-shadow: 8px 8px 0px 0px rgba(0,0,0,1);
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .brutal-shadow-hover:hover {
-    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
-    transform: translate(4px, 4px);
-  }
-
-  /* Structural Light Grid */
-  .brutal-grid {
-    background-color: #ffffff;
-    background-image: 
-      linear-gradient(90deg, rgba(0,0,0,0.05) 2px, transparent 2px),
-      linear-gradient(180deg, rgba(0,0,0,0.05) 2px, transparent 2px);
-    background-size: 64px 64px;
+  /* ─── Clay Card System ─── */
+  .clay-card {
+    border-radius: 24px;
+    box-shadow: var(--shadow-clay-lg);
+    border: none;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
   }
 
-  /* The Receipt Edge for the Experience Section */
-  .receipt-edge {
-    background-image: radial-gradient(circle at 10px 0, transparent 10px, white 11px);
-    background-size: 20px 20px;
-    background-repeat: repeat-x;
+  .clay-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0) 60%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .clay-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 12px 0 rgba(0,0,0,0.14), 0 32px 60px rgba(0,0,0,0.16), inset 0 3px 0 rgba(255,255,255,0.9);
+  }
+
+  .clay-card-sm {
+    border-radius: 16px;
+    box-shadow: var(--shadow-clay-md);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  }
+
+  .clay-card-sm::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 55%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .clay-card-sm:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 0 rgba(0,0,0,0.12), 0 20px 40px rgba(0,0,0,0.14), inset 0 2px 0 rgba(255,255,255,0.85);
+  }
+
+  /* ─── Clay Button ─── */
+  .clay-btn {
+    border-radius: 50px;
+    box-shadow: var(--shadow-clay-sm);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .clay-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 45%;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%);
+    pointer-events: none;
+  }
+
+  .clay-btn:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 6px 0 rgba(0,0,0,0.12), 0 12px 24px rgba(0,0,0,0.14), inset 0 2px 0 rgba(255,255,255,0.7);
+  }
+
+  .clay-btn:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 2px 0 rgba(0,0,0,0.1), 0 4px 8px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.6);
+  }
+
+  /* ─── Clay Badge/Chip ─── */
+  .clay-chip {
+    border-radius: 50px;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.08), 0 4px 10px rgba(0,0,0,0.07), inset 0 1px 0 rgba(255,255,255,0.8);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    position: relative;
+  }
+
+  .clay-chip::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 50%;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0) 100%);
+    pointer-events: none;
+  }
+
+  /* ─── Clay Tag (inline, smaller) ─── */
+  .clay-tag {
+    border-radius: 50px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.06), 0 3px 8px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.75);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: transform 0.2s ease;
+  }
+
+  .clay-tag:hover {
+    transform: scale(1.05);
+  }
+
+  /* ─── Section Header ─── */
+  .clay-section-label {
+    border-radius: 50px;
+    box-shadow: var(--shadow-clay-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1.2rem;
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-family: 'JetBrains Mono', monospace;
+    position: relative;
+  }
+
+  .clay-section-label::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0) 60%);
+    pointer-events: none;
+  }
+
+  /* ─── Clay Divider ─── */
+  .clay-divider {
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, transparent, rgba(0,0,0,0.08), transparent);
+    margin: 2rem 0;
+  }
+
+  /* ─── Floating blob decorations ─── */
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── Page background ─── */
+  .clay-page-bg {
+    background-color: var(--clay-bg);
+    background-image:
+      radial-gradient(circle at 10% 10%, rgba(255, 229, 102, 0.2) 0%, transparent 40%),
+      radial-gradient(circle at 90% 20%, rgba(212, 186, 255, 0.2) 0%, transparent 40%),
+      radial-gradient(circle at 50% 70%, rgba(168, 216, 255, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 20% 80%, rgba(168, 240, 198, 0.15) 0%, transparent 40%);
+    background-attachment: fixed;
+  }
+
+  /* ─── Mono text ─── */
+  .font-mono-clay {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .font-serif-clay {
+    font-family: 'Instrument Serif', serif;
+  }
+
+  /* ─── Animated gradient text ─── */
+  .clay-gradient-text {
+    background: linear-gradient(135deg, #7c3aed, #db2777, #ea580c, #16a34a);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 5s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* ─── Pulse ring for status ─── */
+  .pulse-ring {
+    position: relative;
+    display: inline-block;
+  }
+
+  .pulse-ring::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    opacity: 0;
+    animation: pulseRing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  @keyframes pulseRing {
+    0% { transform: scale(0.8); opacity: 0.8; }
+    100% { transform: scale(1.6); opacity: 0; }
+  }
+
+  /* ─── Scroll reveal base ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.2, 0.64, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

@@ -1,225 +1,170 @@
-import { motion, useMotionValue, useTransform } from "framer-motion";
-import { Github, Linkedin, ArrowUpRight, Sparkles, Code2, Layers, Globe } from "lucide-react";
-
-const TechPill = ({ label, color, delay }) => (
-  <motion.span
-    initial={{ opacity: 0, scale: 0.7 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ delay, type: "spring", stiffness: 300, damping: 18 }}
-    className="clay-chip px-3 py-1.5 text-gray-800"
-    style={{ backgroundColor: color }}
-  >
-    {label}
-  </motion.span>
-);
-
-const FloatingBlob = ({ color, size, top, left, delay }) => (
-  <motion.div
-    animate={{ y: [0, -20, 0], x: [0, 10, 0] }}
-    transition={{ duration: 8, delay, repeat: Infinity, ease: "easeInOut" }}
-    className="blob"
-    style={{ backgroundColor: color, width: size, height: size, top, left }}
-  />
-);
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export default function Hero() {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const rotateX = useTransform(mouseY, [-300, 300], [6, -6]);
-  const rotateY = useTransform(mouseX, [-300, 300], [-6, 6]);
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, 300]);
+  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
+
+  const letterVariants = {
+    hidden: { y: "110%" },
+    visible: (i) => ({
+      y: 0,
+      transition: {
+        duration: 0.9,
+        ease: [0.33, 1, 0.68, 1],
+        delay: i * 0.035,
+      },
+    }),
+  };
+
+  const nameTop = "TUSHAR";
+  const nameBottom = "TANWAR";
 
   return (
-    <section className="relative min-h-screen pt-20 pb-24 px-6 overflow-hidden flex items-center clay-page-bg">
-      {/* Ambient blobs */}
-      <FloatingBlob color="#FFE566" size="400px" top="-100px" left="-80px" delay={0} />
-      <FloatingBlob color="#D4BAFF" size="350px" top="20%" left="60%" delay={2} />
-      <FloatingBlob color="#A8F0C6" size="300px" top="60%" left="10%" delay={4} />
-      <FloatingBlob color="#FFB3E6" size="250px" top="70%" left="75%" delay={1} />
+    <section
+      ref={ref}
+      className="relative h-screen flex items-center justify-center overflow-hidden"
+    >
+      {/* Subtle background grid */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.04]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(232,232,227,1) 1px, transparent 1px), linear-gradient(90deg, rgba(232,232,227,1) 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
+        }}
+      />
 
-      <div className="max-w-6xl mx-auto w-full relative z-10">
-        {/* Status badge */}
+      {/* Ambient glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/3 left-1/3 w-[600px] h-[600px] bg-accent/[0.03] rounded-full blur-[150px]" />
+        <div className="absolute bottom-1/3 right-1/3 w-[400px] h-[400px] bg-light/[0.02] rounded-full blur-[120px]" />
+      </div>
+
+      <motion.div
+        style={{ y, opacity, scale }}
+        className="relative z-10 text-center px-6"
+      >
+        {/* Role label */}
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="flex justify-center mb-10"
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="mb-10"
         >
-          <div className="clay-section-label bg-clay-green text-gray-800">
-            <span className="pulse-ring w-2 h-2 bg-emerald-500 rounded-full inline-block text-emerald-500" />
-            Available for full-time roles · India
-          </div>
+          <span className="text-accent font-mono text-xs tracking-[0.3em] uppercase">
+            Full-Stack Developer
+          </span>
         </motion.div>
 
-        {/* Main content grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
-
-          {/* ── Left: Name + Bio ── */}
-          <div className="lg:col-span-3 flex flex-col gap-6">
-            <div>
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.15 }}
-                className="font-mono-clay text-sm font-bold text-gray-500 uppercase tracking-widest mb-3"
+        {/* Name — First line */}
+        <div className="overflow-hidden">
+          <motion.div className="flex justify-center">
+            {nameTop.split("").map((char, i) => (
+              <motion.span
+                key={`top-${i}`}
+                custom={i}
+                variants={letterVariants}
+                initial="hidden"
+                animate="visible"
+                className="font-display font-extrabold text-[clamp(3.5rem,13vw,12rem)] leading-[0.88] tracking-[-0.04em] text-light-50 inline-block"
               >
-                Full-Stack Web Developer
-              </motion.p>
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, type: "spring", stiffness: 120 }}
-                className="text-6xl md:text-8xl font-black leading-[0.88] tracking-tight text-gray-900"
-              >
-                Tushar
-                <br />
-                <span className="clay-gradient-text">Tanwar</span>
-              </motion.h1>
-            </div>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35 }}
-              className="text-lg text-gray-600 max-w-lg leading-relaxed font-medium"
-            >
-              I build <span className="font-bold text-gray-900">scalable full-stack web applications</span> — from real-time collaboration tools to media platforms. Passionate about clean architecture, performant APIs, and interfaces people actually enjoy using.
-            </motion.p>
-
-            {/* Tech pills */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.45 }}
-              className="flex flex-wrap gap-2"
-            >
-              {[
-                { label: "React.js", color: "#A8D8FF" },
-                { label: "Node.js", color: "#A8F0C6" },
-                { label: "MongoDB", color: "#FFD0A8" },
-                { label: "Socket.io", color: "#D4BAFF" },
-                { label: "Express.js", color: "#FFB3E6" },
-                { label: "REST APIs", color: "#FFE566" },
-              ].map((t, i) => (
-                <TechPill key={t.label} label={t.label} color={t.color} delay={0.5 + i * 0.06} />
-              ))}
-            </motion.div>
-
-            {/* CTA row */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.65 }}
-              className="flex flex-wrap gap-4 pt-2"
-            >
-              <a
-                href="/Drive CV Feb 2025.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="clay-btn inline-flex items-center gap-2 px-7 py-3.5 bg-gray-900 text-white text-sm font-bold"
-              >
-                <ArrowUpRight className="w-4 h-4" />
-                Download Resume
-              </a>
-              <a
-                href="https://github.com/TRrajputDEV"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="clay-btn inline-flex items-center gap-2 px-7 py-3.5 bg-white text-gray-900 text-sm font-bold"
-              >
-                <Github className="w-4 h-4" />
-                GitHub
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="clay-btn inline-flex items-center gap-2 px-7 py-3.5 bg-clay-blue text-gray-900 text-sm font-bold"
-              >
-                <Linkedin className="w-4 h-4" />
-                LinkedIn
-              </a>
-            </motion.div>
-          </div>
-
-          {/* ── Right: Cards stack ── */}
-          <div className="lg:col-span-2 flex flex-col gap-5">
-
-            {/* Card 1 — Intro card with 3D tilt */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3, type: "spring", stiffness: 100 }}
-              onMouseMove={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect();
-                mouseX.set(e.clientX - rect.left - rect.width / 2);
-                mouseY.set(e.clientY - rect.top - rect.height / 2);
-              }}
-              onMouseLeave={() => { mouseX.set(0); mouseY.set(0); }}
-              style={{ rotateX, rotateY, transformPerspective: 800 }}
-              className="clay-card bg-clay-yellow p-6"
-            >
-              <div className="relative z-10">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 rounded-clay-sm bg-white/60 flex items-center justify-center shadow-clay-sm">
-                    <Code2 className="w-5 h-5 text-gray-800" />
-                  </div>
-                  <span className="font-mono-clay text-xs font-bold text-gray-600 uppercase tracking-wider">MERN Stack</span>
-                </div>
-                <h3 className="text-2xl font-black text-gray-900 leading-snug">
-                  Building concurrent real-time architectures.
-                </h3>
-              </div>
-            </motion.div>
-
-            {/* Card 2 — Stat callout */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.42, type: "spring", stiffness: 100 }}
-              className="clay-card bg-clay-purple p-6"
-            >
-              <div className="relative z-10 flex items-center gap-5">
-                <div>
-                  <div className="text-4xl font-black text-gray-900 leading-none">3+</div>
-                  <div className="font-mono-clay text-xs font-bold text-gray-600 uppercase tracking-wider mt-1">Years Coding</div>
-                </div>
-                <div className="w-px self-stretch bg-black/10" />
-                <div>
-                  <div className="text-4xl font-black text-gray-900 leading-none">10+</div>
-                  <div className="font-mono-clay text-xs font-bold text-gray-600 uppercase tracking-wider mt-1">Projects Built</div>
-                </div>
-                <div className="w-px self-stretch bg-black/10" />
-                <div>
-                  <div className="text-4xl font-black text-gray-900 leading-none">∞</div>
-                  <div className="font-mono-clay text-xs font-bold text-gray-600 uppercase tracking-wider mt-1">Curiosity</div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Card 3 — Currently learning */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.54, type: "spring", stiffness: 100 }}
-              className="clay-card bg-clay-pink p-5"
-            >
-              <div className="relative z-10">
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="font-mono-clay text-xs font-bold text-gray-600 uppercase tracking-wider">Currently exploring</span>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {["TypeScript", "Next.js", "Docker", "Redis"].map((t) => (
-                    <span key={t} className="clay-tag px-3 py-1.5 bg-white/70 text-gray-800">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-
-          </div>
+                {char}
+              </motion.span>
+            ))}
+          </motion.div>
         </div>
-      </div>
+
+        {/* Name — Second line */}
+        <div className="overflow-hidden mt-1">
+          <motion.div className="flex justify-center">
+            {nameBottom.split("").map((char, i) => (
+              <motion.span
+                key={`bot-${i}`}
+                custom={i + nameTop.length}
+                variants={letterVariants}
+                initial="hidden"
+                animate="visible"
+                className="font-display font-extrabold text-[clamp(3.5rem,13vw,12rem)] leading-[0.88] tracking-[-0.04em] text-light-50 inline-block"
+              >
+                {char}
+              </motion.span>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Description */}
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1.2 }}
+          className="text-light-500 text-base md:text-lg mt-14 max-w-lg mx-auto leading-relaxed font-body font-light"
+        >
+          Building scalable web applications with clean
+          <br className="hidden md:block" />
+          architecture and interfaces people enjoy using.
+        </motion.p>
+
+        {/* CTA Links */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.5 }}
+          className="flex items-center justify-center gap-8 mt-10"
+        >
+          <a
+            href="https://github.com/TRrajputDEV"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-light-500 text-sm font-body hover:text-accent transition-colors duration-300 flex items-center gap-2 group"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-accent/60 group-hover:bg-accent transition-colors" />
+            GitHub
+          </a>
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-light-500 text-sm font-body hover:text-accent transition-colors duration-300 flex items-center gap-2 group"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-accent/60 group-hover:bg-accent transition-colors" />
+            LinkedIn
+          </a>
+          <a
+            href="/Drive CV Feb 2025.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-light-500 text-sm font-body hover:text-accent transition-colors duration-300 flex items-center gap-2 group"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-accent/60 group-hover:bg-accent transition-colors" />
+            Resume
+          </a>
+        </motion.div>
+      </motion.div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2.2, duration: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
+      >
+        <span className="text-light-600 text-[10px] font-mono tracking-[0.25em] uppercase">
+          Scroll
+        </span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="w-px h-12 bg-gradient-to-b from-light-600/60 to-transparent"
+        />
+      </motion.div>
     </section>
   );
 }

@@ -68,7 +68,7 @@ export default function Stats() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="font-display font-bold text-4xl md:text-5xl text-light-50 leading-[1.1] tracking-tight mb-10"
+              className="font-display font-bold text-4xl md:text-5xl text-dark-600 leading-[1.1] tracking-tight mb-10"
             >
               I craft digital
               <br />
@@ -86,12 +86,12 @@ export default function Stats() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="space-y-5"
             >
-              <p className="text-light-500 text-base leading-relaxed font-light">
+              <p className="text-dark-500 text-base leading-relaxed font-light">
                 I'm a full-stack developer based in India with a passion for
                 building scalable web applications — from real-time collaboration
                 tools to media platforms and content management systems.
               </p>
-              <p className="text-light-500 text-base leading-relaxed font-light">
+              <p className="text-dark-500 text-base leading-relaxed font-light">
                 My focus is on clean architecture, performant APIs, and creating
                 interfaces that people actually enjoy using. Currently pursuing
                 B.Tech in Computer Science at Lovely Professional University.
@@ -104,7 +104,7 @@ export default function Stats() {
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="h-px bg-dark-400 my-10 origin-left"
+              className="h-px bg-light-300 my-10 origin-left"
             />
 
             {/* Technologies */}
@@ -114,7 +114,7 @@ export default function Stats() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <p className="font-mono text-xs text-light-600 uppercase tracking-[0.15em] mb-5">
+              <p className="font-mono text-xs text-dark-400 uppercase tracking-[0.15em] mb-5">
                 Technologies
               </p>
               <div className="flex flex-wrap gap-3">
@@ -125,7 +125,7 @@ export default function Stats() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: 0.5 + i * 0.04 }}
-                    className="text-sm text-light-400 font-mono px-4 py-2 border border-dark-400 rounded-full hover:border-accent/40 hover:text-accent transition-all duration-300 cursor-default"
+                    className="text-sm text-dark-300 font-mono px-4 py-2 border border-light-300 rounded-full hover:border-accent/40 hover:text-accent transition-all duration-300 cursor-default"
                   >
                     {tech}
                   </motion.span>
@@ -146,14 +146,14 @@ export default function Stats() {
                   transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
                   className="group"
                 >
-                  <div className="text-5xl md:text-6xl font-display font-bold text-light-50 tracking-tight mb-2">
+                  <div className="text-5xl md:text-6xl font-display font-bold text-dark-600 tracking-tight mb-2">
                     <Counter
                       to={stat.value}
                       suffix={stat.suffix}
                       decimals={stat.decimals || 0}
                     />
                   </div>
-                  <div className="text-sm text-light-500 font-body">
+                  <div className="text-sm text-dark-500 font-body">
                     {stat.label}
                   </div>
                   <motion.div
@@ -161,7 +161,7 @@ export default function Stats() {
                     whileInView={{ scaleX: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.4 + i * 0.1 }}
-                    className="h-px bg-dark-500 mt-5 origin-left group-hover:bg-accent/30 transition-colors duration-500"
+                    className="h-px bg-light-400 mt-5 origin-left group-hover:bg-accent/30 transition-colors duration-500"
                   />
                 </motion.div>
               ))}
@@ -173,7 +173,7 @@ export default function Stats() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.7 }}
-              className="mt-14 p-6 border border-dark-400 rounded-2xl hover:border-dark-500 transition-colors duration-500"
+              className="mt-14 p-6 border border-light-300 rounded-2xl hover:border-light-400 transition-colors duration-500"
             >
               <div className="flex items-center gap-3 mb-3">
                 <span className="relative flex h-2.5 w-2.5">
@@ -184,7 +184,7 @@ export default function Stats() {
                   Available for opportunities
                 </span>
               </div>
-              <p className="text-light-600 text-sm font-light leading-relaxed">
+              <p className="text-dark-400 text-sm font-light leading-relaxed">
                 Open to full-time roles, freelance projects, and interesting
                 collaborations.
               </p>

@@ -37,7 +37,7 @@ export default function Hero() {
         className="absolute inset-0 pointer-events-none opacity-[0.04]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(232,232,227,1) 1px, transparent 1px), linear-gradient(90deg, rgba(232,232,227,1) 1px, transparent 1px)",
+            "linear-gradient(rgba(42,42,42,1) 1px, transparent 1px), linear-gradient(90deg, rgba(42,42,42,1) 1px, transparent 1px)",
           backgroundSize: "80px 80px",
         }}
       />
@@ -74,7 +74,7 @@ export default function Hero() {
                 variants={letterVariants}
                 initial="hidden"
                 animate="visible"
-                className="font-display font-extrabold text-[clamp(3.5rem,13vw,12rem)] leading-[0.88] tracking-[-0.04em] text-light-50 inline-block"
+                className="font-display font-extrabold text-[clamp(3.5rem,13vw,12rem)] leading-[0.88] tracking-[-0.04em] text-dark-600 inline-block"
               >
                 {char}
               </motion.span>
@@ -92,7 +92,7 @@ export default function Hero() {
                 variants={letterVariants}
                 initial="hidden"
                 animate="visible"
-                className="font-display font-extrabold text-[clamp(3.5rem,13vw,12rem)] leading-[0.88] tracking-[-0.04em] text-light-50 inline-block"
+                className="font-display font-extrabold text-[clamp(3.5rem,13vw,12rem)] leading-[0.88] tracking-[-0.04em] text-dark-600 inline-block"
               >
                 {char}
               </motion.span>
@@ -105,7 +105,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.2 }}
-          className="text-light-500 text-base md:text-lg mt-14 max-w-lg mx-auto leading-relaxed font-body font-light"
+          className="text-dark-500 text-base md:text-lg mt-14 max-w-lg mx-auto leading-relaxed font-body font-light"
         >
           Building scalable web applications with clean
           <br className="hidden md:block" />
@@ -123,7 +123,7 @@ export default function Hero() {
             href="https://github.com/TRrajputDEV"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-light-500 text-sm font-body hover:text-accent transition-colors duration-300 flex items-center gap-2 group"
+            className="text-dark-500 text-sm font-body hover:text-accent transition-colors duration-300 flex items-center gap-2 group"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-accent/60 group-hover:bg-accent transition-colors" />
             GitHub
@@ -132,7 +132,7 @@ export default function Hero() {
             href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-light-500 text-sm font-body hover:text-accent transition-colors duration-300 flex items-center gap-2 group"
+            className="text-dark-500 text-sm font-body hover:text-accent transition-colors duration-300 flex items-center gap-2 group"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-accent/60 group-hover:bg-accent transition-colors" />
             LinkedIn
@@ -141,7 +141,7 @@ export default function Hero() {
             href="/Drive CV Feb 2025.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-light-500 text-sm font-body hover:text-accent transition-colors duration-300 flex items-center gap-2 group"
+            className="text-dark-500 text-sm font-body hover:text-accent transition-colors duration-300 flex items-center gap-2 group"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-accent/60 group-hover:bg-accent transition-colors" />
             Resume
@@ -156,7 +156,7 @@ export default function Hero() {
         transition={{ delay: 2.2, duration: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
       >
-        <span className="text-light-600 text-[10px] font-mono tracking-[0.25em] uppercase">
+        <span className="text-dark-400 text-[10px] font-mono tracking-[0.25em] uppercase">
           Scroll
         </span>
         <motion.div

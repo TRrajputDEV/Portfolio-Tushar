@@ -11,7 +11,7 @@ function Marquee() {
     "REACT · NODE.JS · MONGODB · SOCKET.IO · EXPRESS · TYPESCRIPT · NEXT.JS · DOCKER · REDIS · TAILWINDCSS · ";
 
   return (
-    <div className="overflow-hidden border-y border-dark-400/40 py-5 select-none">
+    <div className="overflow-hidden border-y border-light-300/40 py-5 select-none">
       <motion.div
         animate={{ x: ["0%", "-50%"] }}
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
@@ -20,7 +20,7 @@ function Marquee() {
         {[...Array(4)].map((_, i) => (
           <span
             key={i}
-            className="font-display text-lg md:text-xl text-dark-600 font-bold tracking-[0.2em] px-4"
+            className="font-display text-lg md:text-xl text-dark-500 font-bold tracking-[0.2em] px-4"
           >
             {items}
           </span>
@@ -48,7 +48,7 @@ export default function App() {
 
       <Navigation />
 
-      <main className="bg-dark overflow-x-hidden">
+      <main className="bg-light-50 overflow-x-hidden">
         <Hero />
         <Marquee />
         <Stats />

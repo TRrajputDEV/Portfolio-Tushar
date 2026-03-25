@@ -15,16 +15,16 @@
 
   body {
     font-family: 'Inter', sans-serif;
-    background-color: #050505;
-    color: #e8e8e3;
+    background-color: #fafaf8;
+    color: #1f1f1f;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
   }
 
   ::selection {
-    background-color: rgba(200, 169, 110, 0.3);
-    color: #fafaf8;
+    background-color: rgba(200, 169, 110, 0.2);
+    color: #1f1f1f;
   }
 
   ::-webkit-scrollbar {
@@ -32,16 +32,16 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #050505;
+    background: #fafaf8;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #2a2a2a;
+    background: #d4d4cd;
     border-radius: 3px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #444444;
+    background: #a8a89f;
   }
 
   h1, h2, h3, h4 {

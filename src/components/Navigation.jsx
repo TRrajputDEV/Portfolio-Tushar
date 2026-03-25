@@ -36,7 +36,7 @@ export default function Navigation() {
         transition={{ duration: 0.35, ease: "easeInOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ${
           scrolled
-            ? "bg-dark/80 backdrop-blur-xl border-b border-dark-400/50"
+            ? "bg-light-50/80 backdrop-blur-xl border-b border-light-300/50"
             : ""
         }`}
       >
@@ -46,7 +46,7 @@ export default function Navigation() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="font-display font-bold text-lg text-light-200 tracking-tight relative z-50"
+            className="font-display font-bold text-lg text-dark-600 tracking-tight relative z-50"
           >
             tushar<span className="text-accent">.</span>
           </motion.a>
@@ -62,7 +62,7 @@ export default function Navigation() {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-light-500 text-[13px] font-body hover:text-light-200 transition-colors duration-300"
+                className="text-dark-500 text-[13px] font-body hover:text-dark-600 transition-colors duration-300"
               >
                 {link.label}
               </a>
@@ -71,7 +71,7 @@ export default function Navigation() {
               href="/Drive CV Feb 2025.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[13px] font-display font-semibold text-dark bg-light-200 px-5 py-2 rounded-full hover:bg-accent hover:text-dark transition-colors duration-300"
+              className="text-[13px] font-display font-semibold text-dark-600 bg-accent px-5 py-2 rounded-full hover:bg-accent/80 hover:text-dark-600 transition-colors duration-300"
             >
               Resume
             </a>
@@ -90,11 +90,11 @@ export default function Navigation() {
                     ? { rotate: 45, y: 5.5, width: "100%" }
                     : { rotate: 0, y: 0 }
                 }
-                className="block h-[1.5px] w-full bg-light-200 origin-center"
+                className="block h-[1.5px] w-full bg-dark-600 origin-center"
               />
               <motion.span
                 animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
-                className="block h-[1.5px] w-3/4 bg-light-200"
+                className="block h-[1.5px] w-3/4 bg-dark-600"
               />
               <motion.span
                 animate={
@@ -102,7 +102,7 @@ export default function Navigation() {
                     ? { rotate: -45, y: -5.5, width: "100%" }
                     : { rotate: 0, y: 0 }
                 }
-                className="block h-[1.5px] w-full bg-light-200 origin-center"
+                className="block h-[1.5px] w-full bg-dark-600 origin-center"
               />
             </div>
           </button>
@@ -117,7 +117,7 @@ export default function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-dark/95 backdrop-blur-2xl flex items-center justify-center"
+            className="fixed inset-0 z-40 bg-light-50/95 backdrop-blur-2xl flex items-center justify-center"
           >
             <nav className="flex flex-col items-center gap-8">
               {navLinks.map((link, i) => (
@@ -129,7 +129,7 @@ export default function Navigation() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
                   transition={{ delay: i * 0.08 }}
-                  className="font-display text-3xl font-bold text-light-200 hover:text-accent transition-colors"
+                  className="font-display text-3xl font-bold text-dark-600 hover:text-accent transition-colors"
                 >
                   {link.label}
                 </motion.a>
@@ -142,7 +142,7 @@ export default function Navigation() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
                 transition={{ delay: 0.32 }}
-                className="font-display text-lg font-semibold text-dark bg-light-200 px-8 py-3 rounded-full mt-4 hover:bg-accent transition-colors"
+                className="font-display text-lg font-semibold text-dark-600 bg-accent px-8 py-3 rounded-full mt-4 hover:bg-accent/80 transition-colors"
               >
                 Resume
               </motion.a>

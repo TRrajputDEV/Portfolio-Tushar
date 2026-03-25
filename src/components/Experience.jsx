@@ -68,13 +68,13 @@ function ExperienceItem({ experience, index }) {
         initial={{ scaleX: 0 }}
         animate={isInView ? { scaleX: 1 } : {}}
         transition={{ duration: 0.6, delay: index * 0.1 }}
-        className="h-px bg-dark-400 origin-left mb-8"
+        className="h-px bg-light-300 origin-left mb-8"
       />
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 pb-12">
         {/* Left column — meta */}
         <div className="md:col-span-4 flex flex-wrap items-start gap-3">
-          <span className="font-mono text-xs text-light-600 tracking-wider">
+          <span className="font-mono text-xs text-dark-400 tracking-wider">
             {experience.period}
           </span>
           <span className="text-[10px] font-mono uppercase tracking-[0.15em] text-accent/60 border border-accent/20 px-2.5 py-1 rounded-full">
@@ -84,16 +84,16 @@ function ExperienceItem({ experience, index }) {
 
         {/* Right column — content */}
         <div className="md:col-span-8">
-          <h3 className="font-display font-bold text-xl md:text-2xl text-light-50 tracking-tight mb-1 group-hover:text-accent transition-colors duration-500">
+          <h3 className="font-display font-bold text-xl md:text-2xl text-dark-600 tracking-tight mb-1 group-hover:text-accent transition-colors duration-500">
             {experience.title}
           </h3>
-          <p className="text-light-500 text-sm mb-6">{experience.company}</p>
+          <p className="text-dark-500 text-sm mb-6">{experience.company}</p>
 
           <ul className="space-y-3">
             {experience.details.map((detail, i) => (
               <li key={i} className="flex items-start gap-3">
                 <span className="w-1 h-1 rounded-full bg-accent/50 mt-2 shrink-0" />
-                <span className="text-light-600 text-sm font-light leading-relaxed">
+                <span className="text-dark-400 text-sm font-light leading-relaxed">
                   {detail}
                 </span>
               </li>
@@ -127,7 +127,7 @@ export default function Experience() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="font-display font-bold text-4xl md:text-5xl text-light-50 tracking-tight mb-20"
+          className="font-display font-bold text-4xl md:text-5xl text-dark-600 tracking-tight mb-20"
         >
           Background &
           <br />

@@ -79,7 +79,7 @@ function ProjectCard({ project, index }) {
         delay: index * 0.12,
         ease: [0.33, 1, 0.68, 1],
       }}
-      className="group relative border border-dark-400 rounded-2xl p-8 md:p-10 overflow-hidden hover:border-dark-600 transition-all duration-500"
+      className="group relative border border-light-300 rounded-2xl p-8 md:p-10 overflow-hidden hover:border-light-500 transition-all duration-500"
     >
       {/* Mouse follow glow */}
       <div
@@ -90,22 +90,22 @@ function ProjectCard({ project, index }) {
       />
 
       {/* Number */}
-      <span className="font-mono text-xs text-light-600 tracking-wider relative z-10">
+      <span className="font-mono text-xs text-dark-400 tracking-wider relative z-10">
         {project.num}
       </span>
 
       {/* Title & tagline */}
       <div className="mt-6 mb-4 relative z-10">
-        <h3 className="font-display font-bold text-2xl md:text-3xl text-light-50 tracking-tight group-hover:text-accent transition-colors duration-500">
+        <h3 className="font-display font-bold text-2xl md:text-3xl text-dark-600 tracking-tight group-hover:text-accent transition-colors duration-500">
           {project.title}
         </h3>
-        <p className="text-light-500 text-sm mt-1.5 font-body">
+        <p className="text-dark-500 text-sm mt-1.5 font-body">
           {project.tagline}
         </p>
       </div>
 
       {/* Description */}
-      <p className="text-light-600 text-sm font-light leading-relaxed mb-8 relative z-10">
+      <p className="text-dark-400 text-sm font-light leading-relaxed mb-8 relative z-10">
         {project.description}
       </p>
 
@@ -114,7 +114,7 @@ function ProjectCard({ project, index }) {
         {project.tech.map((t) => (
           <span
             key={t}
-            className="text-[11px] font-mono text-light-500 px-3 py-1.5 border border-dark-400 rounded-full"
+            className="text-[11px] font-mono text-dark-500 px-3 py-1.5 border border-light-300 rounded-full"
           >
             {t}
           </span>
@@ -128,7 +128,7 @@ function ProjectCard({ project, index }) {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-light-500 hover:text-accent transition-colors duration-300 flex items-center gap-1.5"
+            className="text-sm text-dark-500 hover:text-accent transition-colors duration-300 flex items-center gap-1.5"
           >
             Source
             <ArrowUpRight className="w-3.5 h-3.5" />
@@ -139,7 +139,7 @@ function ProjectCard({ project, index }) {
             href={project.live}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-light-500 hover:text-accent transition-colors duration-300 flex items-center gap-1.5"
+            className="text-sm text-dark-500 hover:text-accent transition-colors duration-300 flex items-center gap-1.5"
           >
             Live Demo
             <ArrowUpRight className="w-3.5 h-3.5" />
@@ -177,7 +177,7 @@ export default function ProjectGrid() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="font-display font-bold text-4xl md:text-5xl text-light-50 tracking-tight mb-4"
+          className="font-display font-bold text-4xl md:text-5xl text-dark-600 tracking-tight mb-4"
         >
           Selected Projects
         </motion.h2>
@@ -187,7 +187,7 @@ export default function ProjectGrid() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-light-500 text-base font-light max-w-lg mb-16"
+          className="text-dark-500 text-base font-light max-w-lg mb-16"
         >
           Full-stack applications I've built — each solving a real problem with
           clean code and thoughtful design.
@@ -199,7 +199,7 @@ export default function ProjectGrid() {
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="h-px bg-dark-400 mb-16 origin-left"
+          className="h-px bg-light-300 mb-16 origin-left"
         />
 
         {/* Project grid */}

@@ -17,7 +17,7 @@ export default function Footer() {
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="h-px bg-dark-400 origin-left mb-20"
+          className="h-px bg-light-300 origin-left mb-20"
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
@@ -31,7 +31,7 @@ export default function Footer() {
             <p className="font-mono text-accent text-xs tracking-[0.2em] uppercase mb-6">
               04 — Contact
             </p>
-            <h2 className="font-display font-bold text-4xl md:text-6xl text-light-50 tracking-tight leading-[1.05]">
+            <h2 className="font-display font-bold text-4xl md:text-6xl text-dark-600 tracking-tight leading-[1.05]">
               Let's build
               <br />
               something great
@@ -58,12 +58,12 @@ export default function Footer() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
-                  className="group flex items-center justify-between py-5 border-b border-dark-400 hover:border-accent/30 transition-colors duration-300"
+                  className="group flex items-center justify-between py-5 border-b border-light-300 hover:border-accent/30 transition-colors duration-300"
                 >
-                  <span className="text-light-400 group-hover:text-light-50 transition-colors duration-300 text-lg font-display font-medium">
+                  <span className="text-dark-300 group-hover:text-dark-600 transition-colors duration-300 text-lg font-display font-medium">
                     {link.label}
                   </span>
-                  <ArrowUpRight className="w-4 h-4 text-light-600 group-hover:text-accent transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  <ArrowUpRight className="w-4 h-4 text-dark-400 group-hover:text-accent transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </motion.a>
               ))}
             </div>
@@ -76,12 +76,12 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-24 pt-8 border-t border-dark-400 flex flex-col md:flex-row items-center justify-between gap-4"
+          className="mt-24 pt-8 border-t border-light-300 flex flex-col md:flex-row items-center justify-between gap-4"
         >
-          <p className="text-light-600 text-xs font-mono tracking-wider">
+          <p className="text-dark-400 text-xs font-mono tracking-wider">
             © 2026 Tushar Tanwar
           </p>
-          <p className="text-light-600 text-xs font-mono tracking-wider">
+          <p className="text-dark-400 text-xs font-mono tracking-wider">
             Full-Stack Developer · India
           </p>
         </motion.div>

@@ -11,7 +11,7 @@ const projects = [
       "A live whiteboarding tool using WebSockets that synchronizes canvas states across 50+ simultaneous connections at sub-200ms latency. Features conflict resolution and session persistence.",
     tech: ["React.js", "Socket.io", "MongoDB", "Node.js"],
     github: "https://github.com/TRrajputDEV",
-    live: "#",
+    live: "https://penspace.vercel.app/",
   },
   {
     num: "02",
@@ -21,7 +21,7 @@ const projects = [
       "Full-stack media hosting with chunked video uploads, Cloudinary CDN delivery, token-based access control, and a rich analytics dashboard for content creators.",
     tech: ["MERN Stack", "Multer", "Cloudinary", "JWT"],
     github: "https://github.com/TRrajputDEV",
-    live: "#",
+    live: "https://watchpixels.onrender.com/",
   },
   {
     num: "03",
